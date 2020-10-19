@@ -1,0 +1,36 @@
+
+.bgo-black-70{
+	  background-color: rgb(0,0,0,70%);
+}
+.bg-image{
+  /* The image used */
+  background-image: url("../imgs/bg-img.jpg");
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.py-10{
+	padding-top: 6rem!important;
+	padding-bottom: 6rem!important;
+}
+.my-15{
+	margin-top: 9rem!important;
+	margin-bottom: 9rem!important;
+}
+.mt-15{
+  margin-top: 9rem!important;
+ }
+.bg-opacity-6{
+	opacity: .6;
+}
+.btn-xs {
+    padding: 1px 5px!important;
+    font-size: 12px!important;
+    line-height: 1.5!important;
+    border-radius: 3px!important;
+}

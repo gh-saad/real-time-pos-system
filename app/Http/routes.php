@@ -14,3 +14,14 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
+
+//roles table 
+Route::resource('/role', 'RolesController@index');
+Route::resource('/role/create', 'RolesController@create');
+
+//User table 
+Route::resource('/user', 'UsersController@index');
