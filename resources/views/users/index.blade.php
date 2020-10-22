@@ -13,7 +13,7 @@
                             <div class="card-header">
                             	<div class="d-flex justify-content-between">
 							      <h5 class="m-0 font-weight-bold text-primary">Users</h5>
-							      <a href="addNewCustomer.php" class="btn btn-primary btn-icon-split btn-sm">
+							      <a href="user/create" class="btn btn-primary btn-icon-split btn-sm">
 							        <span class="icon text-white-50">
 							          <i class="fas fa-plus"></i>
 							        </span>
@@ -52,7 +52,7 @@
                                                     <tr>
                                                         <td>{{$user->username}}</td>
                                                         <td>{{$user->user_info->first_name}} {{$user->user_info->last_name}}</td>
-                                                        <td>{{$user->email}}</td>
+                                                        <td>{{$user->user_info->email}}</td>
                                                         <td>{{$user->role->role_name}}</td>
                                                         <td>{{$user->is_active == 1 ? "Active": "Not Active"}}</td>
                                                         <td>{{$user->created_at->diffForHumans()}}</td>

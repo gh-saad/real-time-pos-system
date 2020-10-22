@@ -20,8 +20,8 @@ class CreateTblUserInfosTable extends Migration
             $table->string('email')->unique();
             $table->string('contact_no',20);
             $table->date('date_of_birth');
-            $table->string('current_address');
-            $table->string('permanent_address2');
+            $table->string('curr_address');
+            $table->string('per_address');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('tbl_users');
         });

@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\tbl_user;
+use App\tbl_role;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Requests\UserRequest;
+use App\tbl_user_info;
 
 class UsersController extends Controller
 {
@@ -29,7 +32,8 @@ class UsersController extends Controller
     public function create()
     {
         //
-        return view('users.create');
+        $roles = tbl_role::lists('role_name','id')->all(); 
+        return view('users.create',compact('roles')); 
     }
 
     /**
@@ -38,10 +42,14 @@ class UsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
         //
-        return view('users.store');
+        $input = $request->all();
+        $user = tbl_user::create($input);
+        $input['user_id'] = $user->id;
+        tbl_user_info::create($input);
+        return redirect('/user');
     }
 
     /**

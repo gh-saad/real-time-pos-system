@@ -20,8 +20,10 @@ Route::auth();
 Route::get('/home', 'HomeController@index');
 
 //roles table 
-Route::resource('/role', 'RolesController@index');
-Route::resource('/role/create', 'RolesController@create');
+Route::resource('/role', 'RolesController');
+Route::get('/user/create', 'UserController@create');
 
 //User table 
-Route::resource('/user', 'UsersController@index');
+Route::resource('/user', 'UsersController');
+
+
