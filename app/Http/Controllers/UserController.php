@@ -2,15 +2,18 @@
 
 namespace App\Http\Controllers;
 
+//load models
 use App\tbl_user;
 use App\tbl_role;
+use App\tbl_user_info;
 use Illuminate\Http\Request;
 
+//load Requests 
 use App\Http\Requests;
 use App\Http\Requests\UserRequest;
-use App\tbl_user_info;
+use App\Http\Requests\UserEditRequest;
 
-class UsersController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,7 +38,7 @@ class UsersController extends Controller
         $roles = tbl_role::lists('role_name','id')->all(); 
         return view('users.create',compact('roles')); 
     }
-
+ 
     /**
      * Store a newly created resource in storage.
      *
@@ -46,6 +49,7 @@ class UsersController extends Controller
     {
         //
         $input = $request->all();
+        $input['password'] = bcrypt($request->password);
         $user = tbl_user::create($input);
         $input['user_id'] = $user->id;
         tbl_user_info::create($input);
@@ -73,7 +77,9 @@ class UsersController extends Controller
     public function edit($id)
     {
         //
-        return view('users.edit');
+        $user = tbl_user::with('user_info')->findOrFail($id);
+        $roles = tbl_role::lists('role_name','id')->all(); 
+        return view('users.edit',compact('user','roles'));
     }
 
     /**
@@ -83,10 +89,16 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserEditRequest $request, $id)
     {
         //
-        return view('users.update');
+        $user = tbl_user::with('user_info')->findOrFail($id);
+
+        $input = $request->all();
+        $user = tbl_user::update($input);
+        tbl_user_info::update($input);
+
+        return redirect()(route('user.index'));
     }
 
     /**
