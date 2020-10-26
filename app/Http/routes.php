@@ -19,11 +19,16 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
-//roles table 
-Route::resource('/role', 'RolesController');
-Route::get('/user/create', 'UserController@create');
+//roles 
+Route::resource('/role', 'RoleController');
 
-//User table 
-Route::resource('/user', 'UsersController');
+//User 
+Route::resource('/user', 'UserController');
+
+//Supplier 
+Route::resource('/supplier', 'supplierController');
+
+//Customer
+Route::resource('/customer', 'customerController');
 
 

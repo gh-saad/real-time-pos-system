@@ -12,7 +12,7 @@ class tbl_user extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'username', 'password','role_id','is_active'
+        'email', 'password','role_id','is_active'
     ];
 
     /**
@@ -21,7 +21,7 @@ class tbl_user extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+         'password', 'remember_token'
     ];
 
     public function role(){

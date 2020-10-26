@@ -49,7 +49,7 @@
                             </a>
                             <div class="collapse" id="collapseContacts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="supplierTable.php">Supplier</a>
+                                    <a class="nav-link" href="{{ route('supplier.index') }}">Supplier</a>
                                      <a class="nav-link" href="customerTable.php">Customers</a>
                                 </nav>
                             </div>
@@ -139,8 +139,8 @@
                             </a>
                             <div class="collapse" id="collapseUserMangment" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="userTable.php">Users</a>
-                                     <a class="nav-link" href="rolesTable.php">Roles</a>
+                                    <a class="nav-link" href="{{ route('user.index') }}">Users</a>
+                                    <a class="nav-link" href="{{ route('role.create') }}">Roles</a>
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSettings" aria-expanded="false" aria-controls="collapseSettings">

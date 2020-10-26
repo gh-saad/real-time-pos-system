@@ -9,19 +9,24 @@
               <li class="breadcrumb-item"><a href="userTable.html">Roles</a></li>
               <li class="breadcrumb-item active">Add New Role</li>
           </ol> --}}
-          {!! Form::open(['method' => 'POST','url' => 'role/store']) !!}
+          {!! Form::open(['method' => 'POST','action' => 'RolesController@store']) !!}
             <div class="card mb-4">
                     
               <div class="card-body">
+                @if(count($errors) > 0)
+                  @foreach($errors->all() as $error)
+                    @include('includes.form_error')
+                  @endforeach
+                @endif
                 <div class="form-row">
                   <div class="col-md-6 mb-3">
-                    {!! Form::label('Role Name:*', null, ['class' => 'control-label']) !!}
-                    {!! Form::text('Role_name',null, ['class' => 'form-control', 'placeholder'=> 'Enter Role Name','required']) !!}
+                    {!! Form::label('Role Name', 'Role Name:*', ['class' => 'control-label']) !!}
+                    {!! Form::text('role_name',null, ['class' => 'form-control', 'placeholder'=> 'Enter Role Name','']) !!}
                   </div>
                 </div>
                 <hr/>
                 <h6>Permissions</h6>
-                <div class="form-row">
+                {{-- <div class="form-row">
                   <div class="col-md-2 mb-3 text-center">
                     <label for="validationTooltip01">User</label>
                   </div>
@@ -49,7 +54,7 @@
                       <label class="custom-control-label" for="userDeleteCheck">Delete</label>
                     </div>
                   </div>
-                </div>
+                </div> --}}
                 <hr/>
 
               </div>
@@ -62,3 +67,5 @@
       </div>
   </main>
   @endsection
+
+  

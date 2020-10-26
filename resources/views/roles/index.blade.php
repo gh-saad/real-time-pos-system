@@ -26,12 +26,14 @@
 	                        <thead>
 	                            <tr>
 	                                <th>Role name</th>
+									<th>Create time</th>
 	                                <th>Action</th> 
 	                            </tr>
 	                        </thead>
 	                        <tfoot>
 	                            <tr>
-	                            	<th>Role name</th>
+									<th>Role name</th>
+									<th>Create time</th>
 	                                <th>Action</th>
 	                            </tr>
 	                        </tfoot>
@@ -39,7 +41,8 @@
 	                        	@if($roles)
 	                        		@foreach($roles as $role)
 			                            <tr>
-			                                <td>{{$role->role_name}}</td>
+											<td>{{$role->role_name}}</td>
+											<td>{{$role->created_at->diffForHumans()}}</td>
 			                                <td>
 			                                	<a href="#" class="btn btn-xs btn-primary">
 			                                		<i class="fas fa-pencil-alt"></i> Edit

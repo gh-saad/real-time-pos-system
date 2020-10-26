@@ -25,15 +25,14 @@ class UserRequest extends Request
     {
         return [
             //
-            'first_name'    => 'required',
-            'last_name'     => 'required',
-            'email'         => 'required',
-            'contact_no'    => 'required',
-            'curr_address'=> 'required',
-            'username'      => 'required',
-            'role_id'       => 'required',
+            'first_name'    => 'required|alpha',
+            'last_name'     => 'required|alpha',
+            'contact_no'    => 'required|numeric',
+            'curr_address'  => 'required',
+            'role_id'       => 'required|exists:tbl_roles,id',
+            'email'         => 'required|unique:tbl_users',
             'password'      => 'required',
-            'cpassword'     => 'required'
+            'cpassword'     => 'required|same:password'
         ];
     }
 }
