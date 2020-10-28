@@ -5,10 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Http\Requests\CustomerCreateRequest;
-use App\tbl_customer;
+use App\tbl_brand;
 
-class CustomerController extends Controller
+class BrandController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,19 +17,8 @@ class CustomerController extends Controller
     public function index()
     {
         //
-        $customers = tbl_customer::all();
-        return view('customers.index',compact('customers'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-        return view('customers.create');
+        $brands = tbl_brand::all();
+        return view('brand.index', compact('brands'));
     }
 
     /**
@@ -39,12 +27,12 @@ class CustomerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CustomerCreateRequest $request)
+    public function store(Request $request)
     {
         //
-        $customer = $request->all();
-        tbl_customer::create($customer);
-        return redirect(route('customer.index'));
+        $data = $request->all();
+        tbl_brand::create($data);
+        return redirect( route('brand.index') );
     }
 
     /**
@@ -53,21 +41,6 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.

@@ -5,10 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Http\Requests\CustomerCreateRequest;
-use App\tbl_customer;
+use App\tbl_category;
 
-class CustomerController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +16,10 @@ class CustomerController extends Controller
      */
     public function index()
     {
+        //b******86@outlook.com
         //
-        $customers = tbl_customer::all();
-        return view('customers.index',compact('customers'));
+        $categories = tbl_category::all();
+        return view('category.index', compact('categories'));
     }
 
     /**
@@ -30,7 +30,6 @@ class CustomerController extends Controller
     public function create()
     {
         //
-        return view('customers.create');
     }
 
     /**
@@ -39,12 +38,12 @@ class CustomerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CustomerCreateRequest $request)
+    public function store(Request $request)
     {
         //
-        $customer = $request->all();
-        tbl_customer::create($customer);
-        return redirect(route('customer.index'));
+        $data = $request->all();
+        tbl_category::create($data);
+        return redirect( route('category.index') );
     }
 
     /**

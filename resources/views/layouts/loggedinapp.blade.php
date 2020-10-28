@@ -50,7 +50,7 @@
                             <div class="collapse" id="collapseContacts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="{{ route('supplier.index') }}">Supplier</a>
-                                     <a class="nav-link" href="customerTable.php">Customers</a>
+                                     <a class="nav-link" href="{{ route('customer.index') }}">Customers</a>
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProducts" aria-expanded="false" aria-controls="collapseProducts">
@@ -60,7 +60,19 @@
                             </a>
                             <div class="collapse" id="collapseProducts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="productTable.php">Product</a>
+                                    <a class="nav-link" href="{{ route('product.index') }}">Products</a>
+                                    <a class="nav-link" href="{{ route('category.index') }}">Categories</a>
+                                    <a class="nav-link" href="{{ route('brand.index') }}">Brands</a>
+                                </nav>
+                            </div>
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePurchase" aria-expanded="false" aria-controls="collapsePurchase">
+                                <div class="sb-nav-link-icon"><i class="fas fa-file-invoice"></i></div>
+                                Purchase
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapsePurchase" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="purchaseTable.php">All Purchase</a>
                                     <a class="nav-link" href="layout-sidenav-light.html">Add New Product</a>
                                 </nav>
                             </div>
@@ -75,14 +87,14 @@
                                     <a class="nav-link" href="layout-sidenav-light.html">Add New Product</a>
                                 </nav>
                             </div>
-                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePurchase" aria-expanded="false" aria-controls="collapsePurchase">
-                                <div class="sb-nav-link-icon"><i class="fas fa-file-invoice"></i></div>
-                                Purchase
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseExpenses" aria-expanded="false" aria-controls="collapseExpenses">
+                                <div class="sb-nav-link-icon"><i class="fas fa-minus-circle"></i></div>
+                                Expenses
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
-                            <div class="collapse" id="collapsePurchase" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                            <div class="collapse" id="collapseExpenses" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="purchaseTable.php">All Purchase</a>
+                                    <a class="nav-link" href="layout-static.html">Product</a>
                                     <a class="nav-link" href="layout-sidenav-light.html">Add New Product</a>
                                 </nav>
                             </div>
@@ -108,18 +120,6 @@
                                     <a class="nav-link" href="layout-sidenav-light.html">Add New Product</a>
                                 </nav>
                             </div>
-                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseExpenses" aria-expanded="false" aria-controls="collapseExpenses">
-                                <div class="sb-nav-link-icon"><i class="fas fa-minus-circle"></i></div>
-                                Expenses
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="collapseExpenses" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="layout-static.html">Product</a>
-                                    <a class="nav-link" href="layout-sidenav-light.html">Add New Product</a>
-                                </nav>
-                            </div>
-
                             <div class="sb-sidenav-menu-heading">Interface</div>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePlugins" aria-expanded="false" aria-controls="collapsePlugins">
                                 <div class="sb-nav-link-icon icon-ratete-40"><i class="fas fa-plug"></i></div>

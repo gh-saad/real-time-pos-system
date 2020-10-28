@@ -26,9 +26,18 @@ Route::resource('/role', 'RoleController');
 Route::resource('/user', 'UserController');
 
 //Supplier 
-Route::resource('/supplier', 'supplierController');
+Route::resource('/supplier', 'SupplierController');
 
 //Customer
-Route::resource('/customer', 'customerController');
+Route::resource('/customer', 'CustomerController');
+
+//brand
+Route::resource('/brand', 'BrandController');
+ 
+//category
+Route::resource('/category', 'CategoryController');
+
+//Product
+Route::resource('/product', 'ProductController');
 
 
