@@ -68,6 +68,8 @@ class SupplierController extends Controller
     public function edit($id)
     {
         //
+        $supplier = tbl_supplier::findOrFail($id);
+        return view('suppliers.edit', compact('supplier'));
     }
 
     /**
@@ -80,6 +82,10 @@ class SupplierController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $data = $request->except(['_token','_method']);
+        tbl_supplier::where('id', $id)->update($data);
+
+        return redirect( route('supplier.index') );
     }
 
     /**
@@ -91,5 +97,7 @@ class SupplierController extends Controller
     public function destroy($id)
     {
         //
+        tbl_supplier::findOrFail($id)->delete();
+        return redirect( route('supplier.index') );
     }
 }

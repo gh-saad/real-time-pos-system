@@ -9,7 +9,7 @@
             <li class="breadcrumb-item"><a href="userTable.html">Users</a></li>
             <li class="breadcrumb-item active">Add New User</li>
         </ol>
-        {!! Form::open(['method' => 'POST','action' => 'supplierController@store']) !!}
+        {!! Form::open(['method' => 'POST','action' => 'SupplierController@store']) !!}
           <div class="card mb-4">
             <div class="card-header">
                 <h5 class="m-0">Bio Data</h5>
