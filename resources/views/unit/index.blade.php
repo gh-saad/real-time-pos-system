@@ -3,12 +3,12 @@
 @section('content')
 <main>
     <div class="container-fluid">
-        <h1 class="mt-4">Brand</h1>
+        <h1 class="mt-4">Unit</h1>
         <div class="row">
             <div class="col-md-4">
                 <div class="card mb-4">
                     <div class="card-header">
-                        <h5 class="m-0">Add New Brand</h5>
+                        <h5 class="m-0">Add New Unit</h5>
                     </div>
                     <div class="card-body">
                         @if(count($errors) > 0)
@@ -16,10 +16,14 @@
                                 @include('includes.form_error')
                             @endforeach
                         @endif
-                        {!! Form::open(['method' => 'POST', 'action' => 'BrandController@store']) !!}
+                        {!! Form::open(['method' => 'POST','action' => 'UnitController@store']) !!}
                         <div class="form-group">
-                            {!! Form::label('name', 'Brand Name :', ['class' => 'control-label']) !!}
-                            {!! Form::text('brand_name', null, array_merge(['class' => 'form-control'])) !!}
+                            {!! Form::label('name', 'Unit Name :', ['class' => 'control-label']) !!}
+                            {!! Form::text('unit_name', null, array_merge(['class' => 'form-control'])) !!}
+                        </div>
+                        <div class="form-group">
+                            {!! Form::label('name', 'Unit Short Name :', ['class' => 'control-label']) !!}
+                            {!! Form::text('unit_short_name', null, array_merge(['class' => 'form-control'])) !!}
                         </div>
                         <div class="form-group">
                             {!! Form::submit('Click Me!', array_merge(['class' => 'btn btn-primary'])) !!}
@@ -31,7 +35,7 @@
             <div class="col-md-8">
                 <div class="card mb-4">
                     <div class="card-header">
-                        <h5 class="m-0 font-weight-bold text-primary">Users</h5>
+                        <h5 class="m-0 font-weight-bold text-primary">Unit</h5>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -49,12 +53,12 @@
                                     </tr>
                                 </tfoot>
                                 <tbody>
-                                    @if($brands)
-                                        @foreach($brands as $brand)
+                                    @if($units)
+                                        @foreach($units as $unit)
                                             <tr>
-                                               <td>{{$brand->brand_name}}</td>
+                                               <td>{{$unit->unit_name}}</td>
                                                 <td>
-                                                <a href="{{ route('user.edit', $brand->id) }}" class="btn btn-xs btn-primary">
+                                                <a href="{{ route('user.edit', $unit->id) }}" class="btn btn-xs btn-primary">
                                                         <i class="fas fa-pencil-alt"></i> Edit
                                                     </a>
                                                     <a href="#" class="btn btn-xs btn-info">

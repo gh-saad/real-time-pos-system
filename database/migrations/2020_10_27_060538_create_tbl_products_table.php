@@ -17,7 +17,10 @@ class CreateTblProductsTable extends Migration
             $table->string('pro_sku');
             $table->string('pro_name');
             $table->mediumText('pro_decs');
-            $table->integer('sell_price');
+            $table->double('sale_price');
+            $table->integer('unit_id');
+            $table->integer('brand_id');
+            $table->integer('cat_id');
             $table->timestamps();
         });
     }

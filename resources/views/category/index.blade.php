@@ -16,7 +16,7 @@
                                 @include('includes.form_error')
                             @endforeach
                         @endif
-                        {!! Form::open(['method' => 'POST','action' => 'categoryController@store']) !!}
+                        {!! Form::open(['method' => 'POST','action' => 'CategoryController@store']) !!}
                         <div class="form-group">
                             {!! Form::label('name', 'Category Name :', ['class' => 'control-label']) !!}
                             {!! Form::text('cat_name', null, array_merge(['class' => 'form-control'])) !!}
