@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\tbl_brand;
+use App\tbl_category;
+use App\tbl_product;
+use App\tbl_unit;
 
 class ProductController extends Controller
 {
@@ -16,6 +20,8 @@ class ProductController extends Controller
     public function index()
     {
         //
+        $products = tbl_product::with('category','brand','unit')->get();
+        return view('product.index', compact('products'));
     }
 
     /**
@@ -26,6 +32,10 @@ class ProductController extends Controller
     public function create()
     {
         //
+        $categories = tbl_category::lists('cat_name','id')->all();
+        $units = tbl_unit::lists('unit_name','id')->all();
+        $brands = tbl_brand::lists('brand_name','id')->all();
+        return view('product.create',compact('categories','units','brands'));
     }
 
     /**
@@ -37,6 +47,9 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         //
+        $data = $request->all();
+        tbl_product::create($data);
+        return redirect( route('product.index') );
     }
 
     /**
