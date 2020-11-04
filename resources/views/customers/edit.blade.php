@@ -9,7 +9,7 @@
             <li class="breadcrumb-item"><a href="userTable.html">Users</a></li>
             <li class="breadcrumb-item active">Add New User</li>
         </ol>
-        {!! Form::open(['method' => 'POST', 'route' => 'customer.store']) !!}
+        {!! Form::model($customer, ['method' => 'PUT', 'route' => ['customer.update', $customer->id] ]) !!}
           <div class="card mb-4">
             <div class="card-header">
                 <h5 class="m-0">Bio Data</h5>
@@ -72,6 +72,11 @@
             <div class="form-group">
               {!! Form::submit('Click Me!') !!}
             </div>
+        {!! Form::close() !!}
+        {!! Form::close() !!}
+        <!-- Button trigger modal -->
+        {!! Form::open(['method' => 'DELETE', 'route' =>['customer.destroy', $customer->id]]) !!}
+          {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
         {!! Form::close() !!}
       </div>
   </main>

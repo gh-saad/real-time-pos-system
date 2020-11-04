@@ -60,15 +60,12 @@
                                                         <td>{{$customer->is_active == 1 ? "Active": "Not Active"}}</td>
                                                         <td>{{$customer->created_at->diffForHumans()}}</td>
                                                         <td>
-                                                        <a href="{{route('user.edit', $customer->id)}}" class="btn btn-xs btn-primary">
+                                                        <a href="{{route('customer.edit', $customer->id)}}" class="btn btn-xs btn-primary">
                                                         		<i class="fas fa-pencil-alt"></i> Edit
                                                         	</a>
                                                             <a href="#" class="btn btn-xs btn-info">
                                                             	<i class="fa fa-eye"></i> View
                                                             </a>
-                           									<button data-href="#" class="btn btn-xs btn-danger">
-                           										<i class="fas fa-trash"></i> Delete
-                           									</button>
                            								</td>
                                                     </tr>
                                                 @endforeach

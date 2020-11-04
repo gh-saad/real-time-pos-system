@@ -67,6 +67,8 @@ class CustomerController extends Controller
     public function edit($id)
     {
         //
+        $customer = tbl_customer::findOrFail($id);
+        return view('customers.edit', compact('customer'));
     }
 
     /**
@@ -79,6 +81,9 @@ class CustomerController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $data = $request->except(['_token','_method']);
+        tbl_customer::where('id', $id)->update($data);
+        return redirect( route('customer.index') );
     }
 
     /**
@@ -90,5 +95,7 @@ class CustomerController extends Controller
     public function destroy($id)
     {
         //
+        tbl_customer::findOrFail($id)->delete();
+        return redirect( route('customer.index') );
     }
 }
