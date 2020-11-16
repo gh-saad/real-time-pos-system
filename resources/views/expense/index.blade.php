@@ -4,7 +4,7 @@
 
 <main>
     <div class="container-fluid">
-        <h1 class="mt-4">Product</h1>
+        <h1 class="mt-4">expense</h1>
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
             <li class="breadcrumb-item active">Users</li>
@@ -13,7 +13,7 @@
             <div class="card-header">
                 <div class="d-flex justify-content-between">
                     <h5 class="m-0 font-weight-bold text-primary">Users</h5>
-                    <a href="product/create" class="btn btn-primary btn-icon-split btn-sm">
+                    <a href="expense/create" class="btn btn-primary btn-icon-split btn-sm">
                     <span class="icon text-white-50">
                         <i class="fas fa-plus"></i>
                     </span>
@@ -49,24 +49,26 @@
                             </tr>
                         </tfoot>
                         <tbody>
-                            @if($products)
-                                @foreach($products as $product)
+                            @if($expenses)
+                                @foreach($expenses as $expense)
                                     <tr>
-                                        <td>PRO00{{$product->id}}</td>
-                                        <td>{{$product->pro_name}}</td>
-                                        <td>{{$product->sale_price}}</td>
-                                        <td>{{$product->category->cat_name}}</td>
-                                        <td>{{$product->brand->brand_name}}</td>
-                                        <td>{{$product->unit->unit_name}}</td>
-                                        <td>{{$product->created_at->diffForHumans()}}</td>
+                                        <td>{{$expense->pro_sku}}</td>
+                                        <td>{{$expense->pro_name}}</td>
+                                        <td>{{$expense->sale_price}}</td>
+                                        <td>{{$expense->category->cat_name}}</td>
+                                        <td>{{$expense->brand->brand_name}}</td>
+                                        <td>{{$expense->unit->unit_name}}</td>
+                                        <td>{{$expense->created_at->diffForHumans()}}</td>
                                         <td>
-                                        <a href="{{route('product.edit', $product->id)}}" class="btn btn-xs btn-primary">
+                                        <a href="{{route('user.edit', $expense->id)}}" class="btn btn-xs btn-primary">
                                                 <i class="fas fa-pencil-alt"></i> Edit
                                             </a>
                                             <a href="#" class="btn btn-xs btn-info">
                                                 <i class="fa fa-eye"></i> View
                                             </a>
-
+                                            <button data-href="#" class="btn btn-xs btn-danger">
+                                                <i class="fas fa-trash"></i> Delete
+                                            </button>
                                         </td>
                                     </tr>
                                 @endforeach
