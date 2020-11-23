@@ -14,8 +14,8 @@
 *)Supplier Edit { }
 *)Supplier Delete { }
 ---------------------------
-*)Customer Create { Done }
-*)Customer Table { Done }
+*)Customer Create { }
+*)Customer Create { }
 *)Customer Create { }
 *)Customer Create { }
 ---------------------------
