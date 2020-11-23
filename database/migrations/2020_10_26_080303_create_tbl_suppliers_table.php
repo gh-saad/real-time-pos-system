@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTblUserInfosTable extends Migration
+class CreateTblSuppliersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,17 +12,17 @@ class CreateTblUserInfosTable extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_user_infos', function (Blueprint $table) {
+        Schema::create('tbl_suppliers', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
+            $table->string('business_name');
             $table->string('first_name',25);
             $table->string('last_name',25);
-            $table->string('contact_no',20);
-            $table->date('date_of_birth');
-            $table->string('curr_address');
-            $table->string('per_address');
+            $table->string('email');
+            $table->string('contact',20);
+            $table->string('alt_contact');
+            $table->string('address');
+            $table->tinyInteger('is_active');
             $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('tbl_users');
         });
     }
 
@@ -33,6 +33,6 @@ class CreateTblUserInfosTable extends Migration
      */
     public function down()
     {
-        Schema::drop('tbl_user_infos');
+        Schema::drop('tbl_suppliers');
     }
 }

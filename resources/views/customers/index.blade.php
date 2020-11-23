@@ -4,7 +4,7 @@
 
                 <main>
                     <div class="container-fluid">
-                        <h1 class="mt-4">User Table</h1>
+                        <h1 class="mt-4">customers</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
                             <li class="breadcrumb-item active">Users</li>
@@ -13,7 +13,7 @@
                             <div class="card-header">
                             	<div class="d-flex justify-content-between">
 							      <h5 class="m-0 font-weight-bold text-primary">Users</h5>
-							      <a href="user/create" class="btn btn-primary btn-icon-split btn-sm">
+							      <a href="customer/create" class="btn btn-primary btn-icon-split btn-sm">
 							        <span class="icon text-white-50">
 							          <i class="fas fa-plus"></i>
 							        </span>
@@ -26,43 +26,46 @@
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
-                                                <th>Email</th>
+                                                <th>Buisness Name</th>
                                                 <th>Name</th>
-                                                <th>Role</th>
+                                                <th>Email</th>
+                                                <th>Contact No.</th>
+                                                <th>Area</th>
                                                 <th>Status</th>
-                                                <th>Create time</th>
+                                                <th>Create Time</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
-                                                <th>Email</th>
+                                                <th>Buisness Name</th>
                                                 <th>Name</th>
-                                                <th>Role</th>
+                                                <th>Email</th>
+                                                <th>Contact No.</th>
+                                                <th>Area</th>
                                                 <th>Status</th>
-                                                <th>Create time</th>
+                                                <th>Create Time</th>
                                                 <th>Action</th>
                                             </tr>
                                         </tfoot>
                                         <tbody>
-                                            @if($users)
-                                                @foreach($users as $user)
+                                            @if($customers)
+                                                @foreach($customers as $customer)
                                                     <tr>
-                                                        <td>{{$user->email}}</td>
-                                                        <td>{{$user->user_info->first_name}} {{$user->user_info->last_name}}</td>
-                                                        <td>{{$user->role->role_name}}</td>
-                                                        <td>{{$user->is_active == 1 ? "Active": "Not Active"}}</td>
-                                                        <td>{{$user->created_at->diffForHumans()}}</td>
+                                                        <td>{{$customer->business_name}}</td>
+                                                        <td>{{$customer->first_name}} {{$customer->last_name}}</td>
+                                                        <td>{{$customer->email}}</td>
+                                                        <td>{{$customer->contact}}</td>
+                                                        <td>{{$customer->area}}</td>
+                                                        <td>{{$customer->is_active == 1 ? "Active": "Not Active"}}</td>
+                                                        <td>{{$customer->created_at->diffForHumans()}}</td>
                                                         <td>
-                                                        <a href="{{route('user.edit', $user->id)}}" class="btn btn-xs btn-primary">
+                                                        <a href="{{route('customer.edit', $customer->id)}}" class="btn btn-xs btn-primary">
                                                         		<i class="fas fa-pencil-alt"></i> Edit
                                                         	</a>
                                                             <a href="#" class="btn btn-xs btn-info">
                                                             	<i class="fa fa-eye"></i> View
                                                             </a>
-                           									<button data-href="#" class="btn btn-xs btn-danger">
-                           										<i class="fas fa-trash"></i> Delete
-                           									</button>
                            								</td>
                                                     </tr>
                                                 @endforeach

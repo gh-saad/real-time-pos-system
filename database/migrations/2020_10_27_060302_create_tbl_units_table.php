@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTblUsersTable extends Migration
+class CreateTblUnitsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,13 +12,13 @@ class CreateTblUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_users', function (Blueprint $table) {
+        Schema::create('tbl_units', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('role_id')->index();
-            $table->tinyInteger('is_active');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->rememberToken();
+            $table->string('unit_name');
+            $table->string('unit_short_name');
+            $table->tinyInteger('allow_decimal');
+            $table->integer('base_unit_id');
+            $table->integer('base_unit_mutiplier');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateTblUsersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('tbl_users');
+        Schema::drop('tbl_units');
     }
 }

@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\tbl_user;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Requests\CustomerCreateRequest;
+use App\tbl_customer;
 
-class UsersController extends Controller
+class CustomerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +18,8 @@ class UsersController extends Controller
     public function index()
     {
         //
-        $users = tbl_user::all();
-        return view('users.index',compact('users'));
+        $customers = tbl_customer::all();
+        return view('customers.index',compact('customers'));
     }
 
     /**
@@ -29,7 +30,7 @@ class UsersController extends Controller
     public function create()
     {
         //
-        return view('users.create');
+        return view('customers.create');
     }
 
     /**
@@ -38,10 +39,12 @@ class UsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CustomerCreateRequest $request)
     {
         //
-        return view('users.store');
+        $customer = $request->all();
+        tbl_customer::create($customer);
+        return redirect(route('customer.index'));
     }
 
     /**
@@ -53,7 +56,6 @@ class UsersController extends Controller
     public function show($id)
     {
         //
-        return view('users.show');
     }
 
     /**
@@ -65,7 +67,8 @@ class UsersController extends Controller
     public function edit($id)
     {
         //
-        return view('users.edit');
+        $customer = tbl_customer::findOrFail($id);
+        return view('customers.edit', compact('customer'));
     }
 
     /**
@@ -78,7 +81,9 @@ class UsersController extends Controller
     public function update(Request $request, $id)
     {
         //
-        return view('users.update');
+        $data = $request->except(['_token','_method']);
+        tbl_customer::where('id', $id)->update($data);
+        return redirect( route('customer.index') );
     }
 
     /**
@@ -90,6 +95,7 @@ class UsersController extends Controller
     public function destroy($id)
     {
         //
-        return view('users.destroy');
+        tbl_customer::findOrFail($id)->delete();
+        return redirect( route('customer.index') );
     }
 }

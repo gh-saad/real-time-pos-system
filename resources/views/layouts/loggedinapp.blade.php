@@ -49,8 +49,8 @@
                             </a>
                             <div class="collapse" id="collapseContacts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="supplierTable.php">Supplier</a>
-                                     <a class="nav-link" href="customerTable.php">Customers</a>
+                                    <a class="nav-link" href="{{ route('supplier.index') }}">Supplier</a>
+                                     <a class="nav-link" href="{{ route('customer.index') }}">Customers</a>
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProducts" aria-expanded="false" aria-controls="collapseProducts">
@@ -60,7 +60,20 @@
                             </a>
                             <div class="collapse" id="collapseProducts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="productTable.php">Product</a>
+                                    <a class="nav-link" href="{{ route('product.index') }}">Products</a>
+                                    <a class="nav-link" href="{{ route('category.index') }}">Categories</a>
+                                    <a class="nav-link" href="{{ route('brand.index') }}">Brands</a>
+                                    <a class="nav-link" href="{{ route('unit.index') }}">Units</a>
+                                </nav>
+                            </div>
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePurchase" aria-expanded="false" aria-controls="collapsePurchase">
+                                <div class="sb-nav-link-icon"><i class="fas fa-file-invoice"></i></div>
+                                Purchase
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapsePurchase" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="{{ route('purchase.index') }}">All Purchase</a>
                                     <a class="nav-link" href="layout-sidenav-light.html">Add New Product</a>
                                 </nav>
                             </div>
@@ -71,18 +84,18 @@
                             </a>
                             <div class="collapse" id="collapseSells" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="salesTable.php">All Sales</a>
+                                    <a class="nav-link" href="{{ route('sale.index') }}">All Sales</a>
                                     <a class="nav-link" href="layout-sidenav-light.html">Add New Product</a>
                                 </nav>
                             </div>
-                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePurchase" aria-expanded="false" aria-controls="collapsePurchase">
-                                <div class="sb-nav-link-icon"><i class="fas fa-file-invoice"></i></div>
-                                Purchase
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseExpenses" aria-expanded="false" aria-controls="collapseExpenses">
+                                <div class="sb-nav-link-icon"><i class="fas fa-minus-circle"></i></div>
+                                Expenses
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
-                            <div class="collapse" id="collapsePurchase" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                            <div class="collapse" id="collapseExpenses" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="purchaseTable.php">All Purchase</a>
+                                    <a class="nav-link" href="{{ route('expense.index') }}">Expence</a>
                                     <a class="nav-link" href="layout-sidenav-light.html">Add New Product</a>
                                 </nav>
                             </div>
@@ -93,7 +106,7 @@
                             </a>
                             <div class="collapse" id="collapseStock" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="stockTable.php">All Stock</a>
+                                    <a class="nav-link" href="/sale">All Stock</a>
                                     <a class="nav-link" href="layout-sidenav-light.html">Add New Product</a>
                                 </nav>
                             </div>
@@ -108,18 +121,6 @@
                                     <a class="nav-link" href="layout-sidenav-light.html">Add New Product</a>
                                 </nav>
                             </div>
-                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseExpenses" aria-expanded="false" aria-controls="collapseExpenses">
-                                <div class="sb-nav-link-icon"><i class="fas fa-minus-circle"></i></div>
-                                Expenses
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="collapseExpenses" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="layout-static.html">Product</a>
-                                    <a class="nav-link" href="layout-sidenav-light.html">Add New Product</a>
-                                </nav>
-                            </div>
-
                             <div class="sb-sidenav-menu-heading">Interface</div>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePlugins" aria-expanded="false" aria-controls="collapsePlugins">
                                 <div class="sb-nav-link-icon icon-ratete-40"><i class="fas fa-plug"></i></div>
@@ -139,8 +140,8 @@
                             </a>
                             <div class="collapse" id="collapseUserMangment" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="userTable.php">Users</a>
-                                     <a class="nav-link" href="rolesTable.php">Roles</a>
+                                    <a class="nav-link" href="{{ route('user.index') }}">Users</a>
+                                    <a class="nav-link" href="{{ route('role.create') }}">Roles</a>
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSettings" aria-expanded="false" aria-controls="collapseSettings">
@@ -183,12 +184,15 @@
         </div>
         <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="js/scripts.js"></script>
+        <script src="{{ URL::asset('assets/js/sb-admin.js') }}"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-        <script src="assets/demo/chart-area-demo.js"></script>
-        <script src="assets/demo/chart-bar-demo.js"></script>
+        {{-- <script src="assets/demo/chart-area-demo.js"></script> --}}
+        {{-- <script src="assets/demo/chart-bar-demo.js"></script> --}}
         <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
-        <script src="assets/demo/datatables-demo.js"></script>
+        <script src="{{ URL::asset('assets/demo/datatables-demo.js') }}"></script>
+        
+        @yield('script')
+    
     </body>
 </html>	

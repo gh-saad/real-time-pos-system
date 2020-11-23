@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\tbl_role; 
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\tbl_unit;
 
-class RolesController extends Controller
+class UnitController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +17,8 @@ class RolesController extends Controller
     public function index()
     {
         //
-        $roles = tbl_role::all();
-        return view('roles.index',compact('roles'));
+        $units = tbl_unit::all();
+        return view('unit.index', compact('units'));
     }
 
     /**
@@ -29,7 +29,6 @@ class RolesController extends Controller
     public function create()
     {
         //
-        return view('roles.create');
     }
 
     /**
@@ -41,6 +40,10 @@ class RolesController extends Controller
     public function store(Request $request)
     {
         //
+        $data = $request->all();
+        tbl_unit::create($data);
+        return redirect(route('unit.index'));
+
     }
 
     /**

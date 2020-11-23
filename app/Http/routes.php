@@ -19,9 +19,41 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
-//roles table 
-Route::resource('/role', 'RolesController@index');
-Route::resource('/role/create', 'RolesController@create');
+//roles 
+Route::resource('/role', 'RoleController');
 
-//User table 
-Route::resource('/user', 'UsersController@index');
+//User 
+Route::resource('/user', 'UserController');
+
+//Supplier 
+Route::resource('/supplier', 'SupplierController');
+
+//Customer
+Route::resource('/customer', 'CustomerController');
+
+//Unit
+Route::resource('/unit', 'UnitController');
+
+//brand
+Route::resource('/brand', 'BrandController');
+ 
+//category
+Route::resource('/category', 'CategoryController');
+
+//Product
+Route::resource('/product', 'ProductController');
+
+//Purchase
+Route::resource('/purchase', 'PurchaseController');
+//Sale
+Route::resource('/sale', 'SaleController');
+
+//Expense
+Route::resource('/expense', 'ExpenseController');
+
+//Stock
+Route::get('/stock','StockController@index');
+
+//Report
+Route::get('/report','ReportController@index');
+

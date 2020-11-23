@@ -4,11 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class tbl_role extends Model
+class tbl_category extends Model
 {
     //
     protected $fillable = [
-        'role_name'
+        'cat_name', 'parent_id'
     ];
 
 }
