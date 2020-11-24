@@ -17,7 +17,8 @@ Route::get('/', function () {
 });
 
 Route::get('/home', 'HomeController@index');
-
+//product
+Route::get('/product/data', 'ProductController@data')->name('product.data');
 //roles 
 Route::resource('/role', 'RoleController');
 

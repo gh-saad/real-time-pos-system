@@ -1,5 +1,9 @@
 @extends('layouts.loggedinapp')
 
+@push('css')
+<link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />    
+@endpush
+
 @section('content')
 
 <main>
@@ -23,7 +27,7 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
                                 <th>Sku</th>
@@ -36,19 +40,7 @@
                                 <th>Action</th>
                             </tr>
                         </thead>
-                        <tfoot>
-                            <tr>
-                                <th>Sku</th>
-                                <th>Name</th>
-                                <th>Sale price</th>
-                                <th>Category</th>
-                                <th>Brand</th>
-                                <th>Unit</th>
-                                <th>Create Time</th>
-                                <th>Action</th>
-                            </tr>
-                        </tfoot>
-                        <tbody>
+                        {{-- <tbody>
                             @if($products)
                                 @foreach($products as $product)
                                     <tr>
@@ -73,7 +65,7 @@
                                     </tr>
                                 @endforeach
                             @endif
-                        </tbody>
+                        </tbody> --}}
                     </table>
                 </div>
             </div>
@@ -81,3 +73,28 @@
     </div>
 </main>
 @endsection
+
+@push('script')
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+<script>
+    $(function() {
+        $('#productTable').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: '{!! route('product.data') !!}',
+                columns: [
+                {data: 'id'},
+                {data: 'pro_name'},
+                {data: 'sale_price'},
+                {data: 'category.cat_name'},
+                {data: 'brand.brand_name'},
+                {data: 'unit.unit_name'},
+                {data: 'created_at'},
+                {data: 'action', name: 'action', orderable: false, searchable: false}
+                
+                ]
+        });
+    });
+</script>
+@endpush

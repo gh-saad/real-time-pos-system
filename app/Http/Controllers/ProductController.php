@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Yajra\Datatables\Datatables;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -12,6 +13,15 @@ use App\tbl_unit;
 
 class ProductController extends Controller
 {
+    public function data()
+    {
+        //
+        $products = tbl_product::with('category','brand','unit');
+        return Datatables::of($products)
+            ->addColumn('action', function ($products) {
+                return '<a href="#edit-'.$products->id.'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
+            })->make(true);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -20,8 +30,7 @@ class ProductController extends Controller
     public function index()
     {
         //
-        $products = tbl_product::with('category','brand','unit')->get();
-        return view('product.index', compact('products'));
+        return view('product.index');
     }
 
     /**
