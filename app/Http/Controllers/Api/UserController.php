@@ -24,22 +24,28 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        // Validate the request data
-        $validated = $request->validate([
-            'username' => 'required|string|max:255|unique:users',
-            'password' => 'required|string|min:6',
-            'email' => 'required|email|unique:users',
-            'role' => 'required|string',
-            'last_login' => 'nullable|date',
-        ]);
-
-        // Hash the password
-        $validated['password'] = bcrypt($validated['password']);
-
-        // Create the user
-        $user = User::create($validated);
-
-        return ApiResponseClass::sendResponse($user, 'User created successfully.', 201);
+        try {
+            // Validate the request
+            $validated = $request->validate([
+                'name' => 'required|max:255',
+                'password' => 'required|string|min:3',
+                'email' => 'required|email|unique:users',
+                // 'role' => 'required|string',
+            ]);
+        
+            // Hash the password
+            $validated['password'] = bcrypt($validated['password']);
+        
+            // Create the user
+            $user = User::create($validated);
+        
+            // Return success response
+            return ApiResponseClass::sendResponse($user, 'User created successfully!', 200);
+        
+        } catch (ValidationException $e) {
+            // Return validation errors in your custom response format
+            return ApiResponseClass::sendResponse([], $e->errors(), 422);
+        }
     }
 
     /**
@@ -59,25 +65,27 @@ class UserController extends Controller
     {
         // Find user by ID or fail
         $user = User::findOrFail($id);
+        try {
+            // Validate the request data
+            $validated = $request->validate([
+                'name' => 'sometimes|max:255' . $id,
+                'password' => 'sometimes|string|min:3',
+                'email' => 'sometimes|email|unique:users,email,' . $id,
+            ]);
 
-        // Validate the request data
-        $validated = $request->validate([
-            'username' => 'sometimes|string|max:255|unique:users,username,' . $id,
-            'password' => 'sometimes|string|min:6',
-            'email' => 'sometimes|email|unique:users,email,' . $id,
-            'role' => 'sometimes|string',
-            'last_login' => 'nullable|date',
-        ]);
+            // Hash the password if it's being updated
+            if (isset($validated['password'])) {
+                $validated['password'] = bcrypt($validated['password']);
+            }
 
-        // Hash the password if it's being updated
-        if (isset($validated['password'])) {
-            $validated['password'] = bcrypt($validated['password']);
+            // Update the user
+            $user->update($validated);
+
+            return ApiResponseClass::sendResponse($user, 'User updated successfully.', 200);
+        } catch (ValidationException $e) {
+            // Return validation errors in your custom response format
+            return ApiResponseClass::sendResponse([], $e->errors(), 422);
         }
-
-        // Update the user
-        $user->update($validated);
-
-        return ApiResponseClass::sendResponse($user, 'User updated successfully.', 200);
     }
 
     /**
