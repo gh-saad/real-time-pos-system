@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Classes\ApiResponseClass;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
 
 class CategoryController extends Controller
 {
@@ -21,13 +25,21 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        // Validate the request data
-        $validated = $request->validate([
+        $validator = Validator::make($request->all(), [
             'category_name' => 'required|string|max:128',
         ]);
+        if ($validator->fails()) {
+            return ApiResponseClass::sendResponse([], $validator->errors(), 422);
+        }
 
         // Create the supplier
-        $category = Category::create($validated);
+        $data = [
+            'category_name' => $request->category_name,
+            'description' => $request->description,
+            "created_by" => getActiveUserId(),
+            "workspace_id" => getActiveWorkspaceId(),
+        ];
+        $category = Category::create($data);
 
         return ApiResponseClass::sendResponse($category, 'Category created successfully.', 201);
     }
@@ -48,14 +60,18 @@ class CategoryController extends Controller
     {
         // Find user by ID or fail
         $category = Category::findOrFail($id);
-
-        // Validate the request data
-        $validated = $request->validate([
+        
+        $validator = Validator::make($request->all(), [
             'category_name' => 'required|string|max:128',
         ]);
+        if ($validator->fails()) {
+            return ApiResponseClass::sendResponse([], $validator->errors(), 422);
+        }
 
-        // Update the user
-        $category->update($validated);
+        $category->category_name =  $request->category_name;
+        $category->description =  $request->description ?? $category->description;
+        // Update the category
+        $category->save();
 
         return ApiResponseClass::sendResponse($category, 'Category updated successfully.', 200);
     }
