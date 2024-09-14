@@ -22,9 +22,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
-        $users = tbl_user::all();
-        return view('users.index',compact('users'));
+        return view('users.index');
     }
 
     /**
@@ -34,9 +32,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
-        $roles = tbl_role::lists('role_name','id')->all(); 
-        return view('users.create',compact('roles')); 
+        $roles = [];
+        return view('users.create', compact('roles')); 
     }
  
     /**

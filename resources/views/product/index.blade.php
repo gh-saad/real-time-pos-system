@@ -33,6 +33,7 @@
                                 <th>Sku</th>
                                 <th>Name</th>
                                 <th>Sale price</th>
+                                <th>Stock</th>
                                 <th>Category</th>
                                 <th>Brand</th>
                                 <th>Unit</th>
@@ -40,32 +41,6 @@
                                 <th>Action</th>
                             </tr>
                         </thead>
-                        {{-- <tbody>
-                            @if($products)
-                                @foreach($products as $product)
-                                    <tr>
-                                        <td>PRO00{{$product->id}}</td>
-                                        <td>{{$product->pro_name}}</td>
-                                        <td>{{$product->sale_price}}</td>
-                                        <td>{{$product->category->cat_name}}</td>
-                                        <td>{{$product->brand->brand_name}}</td>
-                                        <td>{{$product->unit->unit_name}}</td>
-                                        <td>{{$product->created_at->diffForHumans()}}</td>
-                                        <td>
-                                        <a href="{{route('user.edit', $product->id)}}" class="btn btn-xs btn-primary">
-                                                <i class="fas fa-pencil-alt"></i> Edit
-                                            </a>
-                                            <a href="#" class="btn btn-xs btn-info">
-                                                <i class="fa fa-eye"></i> View
-                                            </a>
-                                            <button data-href="#" class="btn btn-xs btn-danger">
-                                                <i class="fas fa-trash"></i> Delete
-                                            </button>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            @endif
-                        </tbody> --}}
                     </table>
                 </div>
             </div>
@@ -82,17 +57,17 @@
         $('#productTable').DataTable({
             processing: true,
             serverSide: true,
-            ajax: '{!! route('product.data') !!}',
+            ajax: '{!! route('api.products.index') !!}',
                 columns: [
-                {data: 'id'},
-                {data: 'pro_name'},
-                {data: 'sale_price'},
-                {data: 'category.cat_name'},
-                {data: 'brand.brand_name'},
-                {data: 'unit.unit_name'},
-                {data: 'created_at'},
-                {data: 'action', name: 'action', orderable: false, searchable: false}
-                
+                    {data: 'id'},
+                    {data: 'product_name'},
+                    {data: 'price'},
+                    {data: 'stock_quantity'},
+                    {data: 'id'}, // {data: 'category.cat_name'},
+                    {data: 'id'}, // {data: 'brand.brand_name'},
+                    {data: 'id'}, // {data: 'unit.unit_name'},
+                    {data: 'created_at'},
+                    {data: 'id'}, // {data: 'action', name: 'action', orderable: false, searchable: false}
                 ]
         });
     });

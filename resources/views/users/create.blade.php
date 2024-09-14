@@ -9,71 +9,76 @@
             <li class="breadcrumb-item"><a href="userTable.html">Users</a></li>
             <li class="breadcrumb-item active">Add New User</li>
         </ol>
-        {!! Form::open(['method' => 'POST','action' => 'UserController@store']) !!}
+        <form method="POST" action="UserController@store"> <!-- Assuming your backend URL -->
           <div class="card mb-4">
             <div class="card-header">
                 <h5 class="m-0">Bio Data</h5>
             </div>
             <div class="card-body">
-              @if(count($errors) > 0)
-                @foreach($errors->all() as $error)
-                  @include('includes.form_error')
-                @endforeach
-              @endif
+              <!-- Error Handling Example -->
+              <div class="errors">
+                <!-- Display errors dynamically -->
+              </div>
+
               <div class="form-row">
                   <div class="col-md-6 mb-3">
-                      {!! Form::label('First Name', null, ['class' => 'control-label']) !!}
-                      {!! Form::text('first_name', null, array_merge(['class' => 'form-control'])) !!}
+                      <label for="first_name" class="control-label">First Name</label>
+                      <input type="text" name="first_name" id="first_name" class="form-control">
                   </div>
                   <div class="col-md-6 mb-3">
-                      {!! Form::label('Last Name', null, ['class' => 'control-label']) !!}
-                      {!! Form::text('last_name', null, array_merge(['class' => 'form-control'])) !!}
+                      <label for="last_name" class="control-label">Last Name</label>
+                      <input type="text" name="last_name" id="last_name" class="form-control">
                   </div>
               </div>
               <div class="form-row">
                 <div class="col-md-6 mb-3">
-                    {!! Form::label('Contact No', null, ['class' => 'control-label']) !!}
-                    {!! Form::text('contact_no', null, array_merge(['class' => 'form-control'])) !!}
+                    <label for="contact_no" class="control-label">Contact No</label>
+                    <input type="text" name="contact_no" id="contact_no" class="form-control">
                 </div>
                 <div class="col-md-6 mb-3">
-                  {!! Form::label('Address', null, ['class' => 'control-label']) !!}
-                  {!! Form::text('curr_address', null, array_merge(['class' => 'form-control'])) !!}
+                  <label for="curr_address" class="control-label">Address</label>
+                  <input type="text" name="curr_address" id="curr_address" class="form-control">
               </div>
               </div>
             </div>
-            </div>
-            <div class="card mb-4">
+          </div>
+
+          <div class="card mb-4">
             <div class="card-header">
-                <h5 class="m-0">Account Details:</h5>
+                <h5 class="m-0">Account Details</h5>
             </div>
             <div class="card-body">
                 <div class="form-row">
                     <div class="col-md-6 mb-3">
-                      {!! Form::label('Email', null, ['class' => 'control-label']) !!}
-                      {!! Form::email('email', null, array_merge(['class' => 'form-control'])) !!}
+                      <label for="email" class="control-label">Email</label>
+                      <input type="email" name="email" id="email" class="form-control">
                     </div>
                     <div class="col-md-6 mb-3">
-                        {!! Form::label('Role', null, ['class' => 'control-label']) !!}
-                        {!! Form::select('role_id', [''=>'Choose Role'] + $roles , null, array_merge(['class' => 'form-control'])) !!}
-                        
+                        <label for="role_id" class="control-label">Role</label>
+                        <select name="role_id" id="role_id" class="form-control">
+                            <option value="">Choose Role</option>
+                            <!-- Dynamically populate roles here -->
+                        </select>
                     </div>
-                  </div>
-                  <div class="form-row">
+                </div>
+                <div class="form-row">
                     <div class="col-md-6 mb-3">
-                        {!! Form::label('Password', 'Password', ['class' => 'control-label']) !!}
-                        {!! Form::password('password', array_merge(['class' => 'form-control'])) !!}
+                        <label for="password" class="control-label">Password</label>
+                        <input type="password" name="password" id="password" class="form-control">
                     </div>
                     <div class="col-md-6 mb-3">
-                        {!! Form::label('confirm password', 'Confirm Password:', ['class' => 'control-label']) !!}
-                        {!! Form::password('cpassword', array_merge(['class' => 'form-control'])) !!}
+                        <label for="cpassword" class="control-label">Confirm Password</label>
+                        <input type="password" name="cpassword" id="cpassword" class="form-control">
                     </div>
-                  </div>
-              </div>
+                </div>
             </div>
-            <div class="form-group">
-              {!! Form::submit('Click Me!') !!}
-            </div>
-        {!! Form::close() !!}
+          </div>
+
+          <div class="form-group">
+              <button type="submit" class="btn btn-primary">Click Me!</button>
+          </div>
+        </form>
+        </form>
       </div>
   </main>
 @endsection

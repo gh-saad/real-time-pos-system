@@ -49,8 +49,8 @@
                             </a>
                             <div class="collapse" id="collapseContacts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="{{ route('supplier.index') }}">Supplier</a>
-                                     <a class="nav-link" href="{{ route('customer.index') }}">Customers</a>
+                                    {{-- <a class="nav-link" href="{{ route('supplier.index') }}">Supplier</a> --}}
+                                     {{-- <a class="nav-link" href="{{ route('customer.index') }}">Customers</a> --}}
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProducts" aria-expanded="false" aria-controls="collapseProducts">
@@ -60,10 +60,10 @@
                             </a>
                             <div class="collapse" id="collapseProducts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="{{ route('product.index') }}">Products</a>
+                                    {{-- <a class="nav-link" href="{{ route('product.index') }}">Products</a>
                                     <a class="nav-link" href="{{ route('category.index') }}">Categories</a>
                                     <a class="nav-link" href="{{ route('brand.index') }}">Brands</a>
-                                    <a class="nav-link" href="{{ route('unit.index') }}">Units</a>
+                                    <a class="nav-link" href="{{ route('unit.index') }}">Units</a> --}}
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePurchase" aria-expanded="false" aria-controls="collapsePurchase">
@@ -73,8 +73,8 @@
                             </a>
                             <div class="collapse" id="collapsePurchase" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="{{ route('purchase.index') }}">All Purchase</a>
-                                    <a class="nav-link" href="layout-sidenav-light.html">Add New Product</a>
+                                    {{-- <a class="nav-link" href="{{ route('purchase.index') }}">All Purchase</a>
+                                    <a class="nav-link" href="layout-sidenav-light.html">Add New Product</a> --}}
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSells" aria-expanded="false" aria-controls="collapseSells">
@@ -84,7 +84,7 @@
                             </a>
                             <div class="collapse" id="collapseSells" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="{{ route('sale.index') }}">All Sales</a>
+                                    {{-- <a class="nav-link" href="{{ route('sale.index') }}">All Sales</a> --}}
                                     <a class="nav-link" href="layout-sidenav-light.html">Add New Product</a>
                                 </nav>
                             </div>
@@ -95,7 +95,7 @@
                             </a>
                             <div class="collapse" id="collapseExpenses" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="{{ route('expense.index') }}">Expence</a>
+                                    {{-- <a class="nav-link" href="{{ route('expense.index') }}">Expence</a> --}}
                                     <a class="nav-link" href="layout-sidenav-light.html">Add New Product</a>
                                 </nav>
                             </div>
@@ -140,8 +140,8 @@
                             </a>
                             <div class="collapse" id="collapseUserMangment" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="{{ route('user.index') }}">Users</a>
-                                    <a class="nav-link" href="{{ route('role.create') }}">Roles</a>
+                                    {{-- <a class="nav-link" href="{{ route('user.index') }}">Users</a> --}}
+                                    {{-- <a class="nav-link" href="{{ route('role.create') }}">Roles</a> --}}
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSettings" aria-expanded="false" aria-controls="collapseSettings">

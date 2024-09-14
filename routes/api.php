@@ -17,15 +17,15 @@ use App\Http\Controllers\Api\StoreSettingController;
 //     return $request->user();
 // })->middleware('auth:sanctum');
 
-Route::prefix('users')->group(function () {
-    Route::get('/', [UserController::class, 'index']);
-    Route::get('{id}', [UserController::class, 'show']);
-    Route::post('/', [UserController::class, 'store']);
-    Route::put('{id}', [UserController::class, 'update']);
-    Route::delete('{id}', [UserController::class, 'destroy']);
-});
+Route::apiResource('users', UserController::class)->names([
+    'index' => 'api.users.index',
+    'store' => 'api.users.store',
+    'show' => 'api.users.show',
+    'update' => 'api.users.update',
+    'destroy' => 'api.users.destroy',
+]);
 
-// Store Routes
+// store Routes
 Route::prefix('stores')->group(function () {
     Route::get('/', [StoreController::class, 'index']);
     Route::get('{id}', [StoreController::class, 'show']);
@@ -35,13 +35,20 @@ Route::prefix('stores')->group(function () {
 });
 
 // Product Routes
-Route::prefix('products')->group(function () {
-    Route::get('/', [ProductController::class, 'index']);
-    Route::get('{id}', [ProductController::class, 'show']);
-    Route::post('/', [ProductController::class, 'store']);
-    Route::put('{id}', [ProductController::class, 'update']);
-    Route::delete('{id}', [ProductController::class, 'destroy']);
-});
+// Route::prefix('products')->group(function () {
+//     Route::get('/', [ProductController::class, 'index']);
+//     Route::get('{id}', [ProductController::class, 'show']);
+//     Route::post('/', [ProductController::class, 'store']);
+//     Route::put('{id}', [ProductController::class, 'update']);
+//     Route::delete('{id}', [ProductController::class, 'destroy']);
+// });
+Route::apiResource('products', ProductController::class)->names([
+    'index' => 'api.products.index',
+    'store' => 'api.products.store',
+    'show' => 'api.products.show',
+    'update' => 'api.products.update',
+    'destroy' => 'api.products.destroy',
+]);
 
 // Category Routes
 Route::prefix('product/categories')->group(function () {
