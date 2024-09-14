@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('email')->nullable();
             $table->string('phone')->nullable();
             $table->text('address')->nullable();
+            $table->unsignedBigInteger('workspace_id');
+            $table->unsignedBigInteger('created_by');
             $table->timestamps();
         });
     }

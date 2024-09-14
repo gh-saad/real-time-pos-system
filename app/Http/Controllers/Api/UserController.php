@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Classes\ApiResponseClass;
 use App\Models\User;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 
 class UserController extends Controller
@@ -24,28 +25,33 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        try {
-            // Validate the request
-            $validated = $request->validate([
-                'name' => 'required|max:255',
-                'password' => 'required|string|min:3',
-                'email' => 'required|email|unique:users',
-                // 'role' => 'required|string',
-            ]);
-        
-            // Hash the password
-            $validated['password'] = bcrypt($validated['password']);
-        
-            // Create the user
-            $user = User::create($validated);
-        
-            // Return success response
-            return ApiResponseClass::sendResponse($user, 'User created successfully!', 200);
-        
-        } catch (ValidationException $e) {
-            // Return validation errors in your custom response format
-            return ApiResponseClass::sendResponse([], $e->errors(), 422);
+        // Validate the request
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|max:255',
+            'password' => 'required|string|min:3',
+            'email' => 'required|email|unique:users',
+            // 'role' => 'required|string',
+        ]);
+    
+        if ($validator->fails()) {
+            return ApiResponseClass::sendResponse([], $validator->errors(), 422);
         }
+    
+        // Hash the password
+        $encryptedPassword = bcrypt($request->password);
+        
+        $data = [
+            'name' => $request->name,
+            'password' => $encryptedPassword,
+            'email' => $request->email,
+            "created_by" => getActiveUserId(),
+            "workspace_id" => getActiveWorkspaceId(),
+        ];
+        // Create the user
+        $user = User::create($data);
+    
+        // Return success response
+        return ApiResponseClass::sendResponse($user, 'User created successfully!', 200);
     }
 
     /**
@@ -65,27 +71,25 @@ class UserController extends Controller
     {
         // Find user by ID or fail
         $user = User::findOrFail($id);
-        try {
-            // Validate the request data
-            $validated = $request->validate([
-                'name' => 'sometimes|max:255' . $id,
-                'password' => 'sometimes|string|min:3',
-                'email' => 'sometimes|email|unique:users,email,' . $id,
-            ]);
-
-            // Hash the password if it's being updated
-            if (isset($validated['password'])) {
-                $validated['password'] = bcrypt($validated['password']);
-            }
-
-            // Update the user
-            $user->update($validated);
-
-            return ApiResponseClass::sendResponse($user, 'User updated successfully.', 200);
-        } catch (ValidationException $e) {
-            // Return validation errors in your custom response format
-            return ApiResponseClass::sendResponse([], $e->errors(), 422);
+        
+        // Validate the request data
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|max:255',
+            'password' => 'sometimes|string|min:3',
+            'email' => 'required|email|unique:users,email,' . $id,
+        ]);
+        if ($validator->fails()) {
+            return ApiResponseClass::sendResponse([], $validator->errors(), 422);
         }
+        
+        $user->name = $request->name;
+        if ($request->filled('password')) {
+            $user->password = bcrypt($request->password);
+        }
+        $user->email = $request->email;
+        $user->save();
+
+        return ApiResponseClass::sendResponse($user, 'User updated successfully.', 200);
     }
 
     /**

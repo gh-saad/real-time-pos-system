@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('phone');
             $table->string('email');
             $table->string('address');
+            $table->unsignedBigInteger('workspace_id');
+            $table->unsignedBigInteger('created_by');
             $table->timestamps();
         });
     }

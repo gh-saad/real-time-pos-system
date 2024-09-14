@@ -15,6 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('category_name');
             $table->text('description')->nullable();
+            $table->unsignedBigInteger('parent_id')->default(0);
+            $table->unsignedBigInteger('workspace_id');
+            $table->unsignedBigInteger('created_by');
             $table->timestamps();
         });
     }
