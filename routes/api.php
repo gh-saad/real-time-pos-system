@@ -51,22 +51,36 @@ Route::apiResource('products', ProductController::class)->names([
 ]);
 
 // Category Routes
-Route::prefix('product/categories')->group(function () {
-    Route::get('/', [CategoryController::class, 'index']);
-    Route::get('{id}', [CategoryController::class, 'show']);
-    Route::post('/', [CategoryController::class, 'store']);
-    Route::put('{id}', [CategoryController::class, 'update']);
-    Route::delete('{id}', [CategoryController::class, 'destroy']);
-});
+// Route::prefix('product/categories')->group(function () {
+//     Route::get('/', [CategoryController::class, 'index']);
+//     Route::get('{id}', [CategoryController::class, 'show']);
+//     Route::post('/', [CategoryController::class, 'store']);
+//     Route::put('{id}', [CategoryController::class, 'update']);
+//     Route::delete('{id}', [CategoryController::class, 'destroy']);
+// });
+Route::apiResource('product/categories', CategoryController::class)->names([
+    'index' => 'api.categories.index',
+    'store' => 'api.categories.store',
+    'show' => 'api.categories.show',
+    'update' => 'api.categories.update',
+    'destroy' => 'api.categories.destroy',
+]);
 
 // Supplier Routes
-Route::prefix('suppliers')->group(function () {
-    Route::get('/', [SupplierController::class, 'index']);
-    Route::get('{id}', [SupplierController::class, 'show']);
-    Route::post('/', [SupplierController::class, 'store']);
-    Route::put('{id}', [SupplierController::class, 'update']);
-    Route::delete('{id}', [SupplierController::class, 'destroy']);
-});
+// Route::prefix('suppliers')->group(function () {
+//     Route::get('/', [SupplierController::class, 'index']);
+//     Route::get('{id}', [SupplierController::class, 'show']);
+//     Route::post('/', [SupplierController::class, 'store']);
+//     Route::put('{id}', [SupplierController::class, 'update']);
+//     Route::delete('{id}', [SupplierController::class, 'destroy']);
+// });
+Route::apiResource('suppliers', SupplierController::class)->names([
+    'index' => 'api.suppliers.index',
+    'store' => 'api.suppliers.store',
+    'show' => 'api.suppliers.show',
+    'update' => 'api.suppliers.update',
+    'destroy' => 'api.suppliers.destroy',
+]);
 
 // Customer Routes
 Route::prefix('customers')->group(function () {

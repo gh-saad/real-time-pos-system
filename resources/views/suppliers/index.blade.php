@@ -34,40 +34,7 @@
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                            <tfoot>
-                                <tr>
-                                    <th>Buisness Name</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>contact No.</th>
-                                    <th>Status</th>
-                                    <th>Create Time</th>
-                                    <th>Action</th>
-                                </tr>
-                            </tfoot>
-                            <tbody>
-                                @if($suppliers)
-                                    @foreach($suppliers as $supplier)
-                                        <tr>
-                                            <td>{{$supplier->business_name}}</td>
-                                            <td>{{$supplier->first_name}} {{$supplier->last_name}}</td>
-                                            <td>{{$supplier->email}}</td>
-                                            <td>{{$supplier->contact}}</td>
-                                            <td>{{$supplier->is_active == 1 ? "Active": "Not Active"}}</td>
-                                            <td>{{$supplier->created_at->diffForHumans()}}</td>
-                                            <td>
-                                                <a href="{{ route('supplier.edit', $supplier->id) }}" class="btn btn-xs btn-primary">
-                                                    <i class="fas fa-pencil-alt"></i> Edit
-                                                </a>
-                                                <a href="#" class="btn btn-xs btn-info">
-                                                    <i class="fa fa-eye"></i> View
-                                                </a>
-                                                
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                @endif
-                            </tbody>
+                    
                         </table>
                     </div>
                 </div>
@@ -95,3 +62,25 @@
 
 @endsection
 
+@push('script')
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+<script>
+    $(function() {
+        $('#dataTable').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: '{!! route('api.suppliers.index') !!}',
+                columns: [
+                    {data: 'supplier_name'},
+                    {data: 'contact_name'},
+                    {data: 'email'},
+                    {data: 'phone'}, // {data: 'category.cat_name'},
+                    {data: 'address'}, // {data: 'brand.brand_name'},
+                    {data: 'created_at'},
+                    {data: 'id'}, // {data: 'action', name: 'action', orderable: false, searchable: false}
+                ]
+        });
+    });
+</script>
+@endpush

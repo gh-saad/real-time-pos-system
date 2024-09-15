@@ -17,7 +17,6 @@ class CategoryController extends Controller
     public function index()
     {
         //b******86@outlook.com
-        //
         $categories = tbl_category::all();
         return view('category.index', compact('categories'));
     }

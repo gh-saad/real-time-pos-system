@@ -17,7 +17,7 @@ class SupplierController extends Controller
      */
     public function index()
     {
-        //
+        // 
         $suppliers = tbl_supplier::all();
         return view('suppliers.index', compact('suppliers'));
     }

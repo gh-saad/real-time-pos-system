@@ -49,23 +49,25 @@
                             </a>
                             <div class="collapse" id="collapseContacts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    {{-- <a class="nav-link" href="{{ route('supplier.index') }}">Supplier</a> --}}
-                                     {{-- <a class="nav-link" href="{{ route('customer.index') }}">Customers</a> --}}
+                                    <a class="nav-link" href="{{route('supplier.index') }}">Supplier</a> 
+                                    {{-- <a class="nav-link" href="{{route('customer.index') }}">Customers</a>--}}
                                 </nav>
                             </div>
-                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProducts" aria-expanded="false" aria-controls="collapseProducts">
+
+                            <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseProducts" aria-expanded="false" aria-controls="collapseProducts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-cubes"></i></div>
                                 Products
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
-                            <div class="collapse" id="collapseProducts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                            <div class="collapse {{(url()->current() == route('product.index')) ? 'show': 'collapsed'}} {{(url()->current() == route('category.index')) ? 'show': 'collapsed'}}" id="collapseProducts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    {{-- <a class="nav-link" href="{{ route('product.index') }}">Products</a>
+                                    <a class="nav-link" href="{{ route('product.index') }}">Products</a>
                                     <a class="nav-link" href="{{ route('category.index') }}">Categories</a>
-                                    <a class="nav-link" href="{{ route('brand.index') }}">Brands</a>
-                                    <a class="nav-link" href="{{ route('unit.index') }}">Units</a> --}}
+                                    <a class="nav-link" href="{{-- route('brand.index') --}}">Brands</a>
+                                    <a class="nav-link" href="{{-- route('unit.index') --}}">Units</a>
                                 </nav>
                             </div>
+
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePurchase" aria-expanded="false" aria-controls="collapsePurchase">
                                 <div class="sb-nav-link-icon"><i class="fas fa-file-invoice"></i></div>
                                 Purchase
@@ -133,17 +135,19 @@
                                     <a class="nav-link" href="layout-sidenav-light.html">Add New Product</a>
                                 </nav>
                             </div>
-                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUserMangment" aria-expanded="false" aria-controls="collapseLayouts">
+
+                            <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseUserMangment" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
                                 User Mangment
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
-                            <div class="collapse" id="collapseUserMangment" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                            <div class="collapse {{(url()->current() == route('users.index')) ? 'show': 'collapsed'}}" id="collapseUserMangment" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    {{-- <a class="nav-link" href="{{ route('user.index') }}">Users</a> --}}
+                                    <a class="nav-link {{(url()->current() == route('users.index')) ? 'active': ''}}" href="{{ route('users.index') }}">Users</a>
                                     {{-- <a class="nav-link" href="{{ route('role.create') }}">Roles</a> --}}
                                 </nav>
                             </div>
+
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSettings" aria-expanded="false" aria-controls="collapseSettings">
                                 <div class="sb-nav-link-icon"><i class="fas fa-cog"></i></div>
                                 Settings
