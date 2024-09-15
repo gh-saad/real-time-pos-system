@@ -5,8 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class InventoryAdjustment extends Model
+class PurchaseOrder extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
+
+    public function items(){
+        $this->belongsTo(PurchaseOrderItem::class);
+    }
 }

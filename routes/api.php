@@ -11,6 +11,7 @@ use App\Http\Controllers\Api\CustomerController;
 use App\Http\Controllers\Api\TransactionController;
 use App\Http\Controllers\Api\TransactionItemController;
 use App\Http\Controllers\Api\InventoryAdjustmentController;
+use App\Http\Controllers\Api\PurchaseOrderController;
 use App\Http\Controllers\Api\StoreSettingController;
 
 // Route::get('/user', function (Request $request) {
@@ -91,6 +92,14 @@ Route::prefix('customers')->group(function () {
     Route::delete('{id}', [CustomerController::class, 'destroy']);
 });
 
+// Purchase Order Routes
+Route::apiResource('purchase-orders', PurchaseOrderController::class)->names([
+    'index' => 'api.purchase.orders.index',
+    'store' => 'api.purchase.orders.store',
+    'show' => 'api.purchase.orders.show',
+    'update' => 'api.purchase.orders.update',
+    'destroy' => 'api.purchase.orders.destroy',
+]);
 // Transaction Routes
 Route::prefix('transactions')->group(function () {
     Route::get('/', [TransactionController::class, 'index']);
